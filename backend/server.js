@@ -2,15 +2,13 @@ const express=require("express")
 const mongoose=require("mongoose")
 const dotenv=require("dotenv")
 const cors=require("cors")
+const model=require("./models/PicModel.js")
 const bodyParser=require("body-parser")
-const CreateUserRoute=require("./routes/CreateUserRoute.js")
-const Serachroute=require("./routes/SearchUser.js")
-const postsRoute=require("./routes/posts.js")
 dotenv.config()
 //app config
 const app=express()
 const port=process.env.PORT || 9000
-const connectUrl=`mongodb+srv://admin:${process.env.PASSWORD}@cluster0.yde1grw.mongodb.net/sociomedia?retryWrites=true&w=majority`
+const connectUrl=`mongodb+srv://admin:${process.env.PASSWORD}@cluster0.yde1grw.mongodb.net/mdlrShop?retryWrites=true&w=majority`
 //MiddleWares
 app.use(express.json())
 mongoose.set('strictQuery', true)
@@ -26,8 +24,14 @@ mongoose.connect(connectUrl,{
 app.get("/",(req,res)=>{
     res.send("works !")
 })
-app.use("/createUser",CreateUserRoute)
-app.use("/Users",Serachroute)
-app.use("/posts",postsRoute)
+app.get("/products",async(req,res)=>{
+    try{
+        const ress=await model.find({})
+        res.status(200).send(ress)
+    }
+    catch(err){
+        console.log(err)
+    }
+})
 //Listeners
 app.listen(port,()=>{console.log(`listening on port : ${port} `)})
