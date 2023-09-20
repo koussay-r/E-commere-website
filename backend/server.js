@@ -3,6 +3,7 @@ const mongoose=require("mongoose")
 const dotenv=require("dotenv")
 const cors=require("cors")
 const model=require("./models/PicModel.js")
+const modelsub=require("./models/SubscribeFormModel.js")
 const bodyParser=require("body-parser")
 dotenv.config()
 //app config
@@ -30,6 +31,14 @@ app.get("/products",async(req,res)=>{
         res.status(200).send(ress)
     }
     catch(err){
+        console.log(err)
+    }
+})
+app.post("/subscribe",async(req,res)=>{
+    try{
+        const ress=await modelsub.create(req.body)
+        res.status(201).send(ress)
+    }catch(err){
         console.log(err)
     }
 })

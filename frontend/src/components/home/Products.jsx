@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Products(props) {
   return (
-    <div  className='border cursor-pointer hover:shadow-2xl hover:z-10 float-left  '>
+    <div  className='border cursor-pointer sm:hover:shadow-2xl sm:hover:z-10  '>
       <img src={props.item.image} className=''/>
       <div className='py-9 border border-transparent border-t'>
         <p className='pl-4 pb-3 text-[20px]'>{props.item.name}</p>
