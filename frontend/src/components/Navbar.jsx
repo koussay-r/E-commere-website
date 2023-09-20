@@ -1,10 +1,22 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import {AiOutlineShoppingCart} from "react-icons/ai"
 import {BiMenuAltRight} from "react-icons/bi"
-export default function Navbar() {
+import { Link } from 'react-router-dom'
+export default function Navbar(props) {
     const [menu,setMenu]=useState(false)
     const handleMenu=()=>{
         setMenu(!menu)
+    }
+
+    const handleTopsPage=()=>{
+        localStorage.setItem("type",JSON.stringify("top"))
+    }
+    const handleBottomsPage=()=>{
+        localStorage.setItem("type",JSON.stringify("bottom"))
+    }
+    const handleAccessoriesPage=()=>{
+        localStorage.setItem("type",JSON.stringify("Accessories"))
+        
     }
   return (
     <>
@@ -15,11 +27,11 @@ export default function Navbar() {
         </div>
         <div className='flex mt-[1px] gap-10'>
             <ul className='md:flex mt-1 hidden gap-12'>
-                <li className='cursor-pointer'>Home</li>
-                <li className='cursor-pointer'>Tops</li>
-                <li className='cursor-pointer'>Bottoms</li>
-                <li className='cursor-pointer'>Accessories</li>
-                <li className='cursor-pointer'>Contact</li>
+               <Link to={"/"}><li className={`cursor-pointer `}>Home</li></Link> 
+                <Link to="Category"> <li onClick={handleTopsPage} className={`cursor-pointer `}>Tops</li></Link>
+                <Link to="Category"> <li onClick={handleBottomsPage} className='cursor-pointer'>Bottoms</li></Link>
+                <Link to="Category"> <li onClick={handleAccessoriesPage} className='cursor-pointer'>Accessories</li></Link>
+                <li  className='cursor-pointer'>Contact</li>
             </ul>
             <div className='flex cursor-pointer mt-2 gap-1'>
                 <AiOutlineShoppingCart size={"20"} className=''/>

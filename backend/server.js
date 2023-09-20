@@ -51,5 +51,14 @@ app.post("/subscribe",async(req,res)=>{
         console.log(err)
     }
 })
+app.post("/requestProducts",async(req,res)=>{
+    console.log(req.body.type)
+    try{
+        const ress=await model.find({type:req.body.type})
+        res.status(200).send(ress)
+    }catch(Err){
+        console.log(Err)
+    }
+})
 //Listeners
 app.listen(port,()=>{console.log(`listening on port : ${port} `)})
