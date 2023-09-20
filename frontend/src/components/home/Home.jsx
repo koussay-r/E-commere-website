@@ -9,7 +9,6 @@ export default function Home() {
         const handleHomeProducts=async()=>{
             try{
                 const res=await axios.get("http://localhost:9000/products")
-                console.log(res)
                 setProducts(res.data)
             }catch(err){
                 console.log(err)
@@ -26,7 +25,7 @@ export default function Home() {
         <About item={products} />
     </div>
     :
-    <img src={loader} className='block m-auto mt-[30%] md:mt-[20%]' />
+    <img src={loader} className='block m-auto pb-[200px] mt-[30%] md:mt-[20%]' />
    }
    </>
   )

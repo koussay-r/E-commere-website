@@ -34,6 +34,15 @@ app.get("/products",async(req,res)=>{
         console.log(err)
     }
 })
+app.post("/ProductDetails",async(req,res)=>{
+    try{
+        const ress=await model.find({_id:req.body._id})
+        res.status(200).send(ress)
+    }
+    catch(err){
+        console.log(err)
+    }
+})
 app.post("/subscribe",async(req,res)=>{
     try{
         const ress=await modelsub.create(req.body)
