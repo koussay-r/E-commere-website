@@ -52,7 +52,6 @@ app.post("/subscribe",async(req,res)=>{
     }
 })
 app.post("/requestProducts",async(req,res)=>{
-    console.log(req.body.type)
     try{
         const ress=await model.find({type:req.body.type})
         res.status(200).send(ress)

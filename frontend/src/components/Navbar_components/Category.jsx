@@ -16,7 +16,7 @@ export default function Category() {
       }
     }
     handleFindRightProducts()
-  },[])
+  },[productRequested])
   return (
     <div>
       <p className='text-[70px] text-center font-bold '>
