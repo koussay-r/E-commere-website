@@ -9,13 +9,16 @@ export default function Navbar(props) {
     }
 
     const handleTopsPage=()=>{
-        localStorage.setItem("type",JSON.stringify("top"))
+        localStorage.setItem("type",JSON.stringify("Top"))
+        window.location.reload();
     }
     const handleBottomsPage=()=>{
-        localStorage.setItem("type",JSON.stringify("bottom"))
+        localStorage.setItem("type",JSON.stringify("Bottom"))
+        window.location.reload();
     }
     const handleAccessoriesPage=()=>{
         localStorage.setItem("type",JSON.stringify("Accessories"))
+        window.location.reload();
         
     }
   return (

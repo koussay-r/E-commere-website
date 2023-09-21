@@ -3,7 +3,7 @@ const Schema=mongoose.Schema({
     name:String,
     product:String,
     price:String,
-    tye:String,
+    type:String,
     discription:String,
     picture:String
 })
