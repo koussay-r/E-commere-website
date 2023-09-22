@@ -7,16 +7,6 @@ export default function Navbar(props) {
     const handleMenu=()=>{
         setMenu(!menu)
     }
-    const handleTopsPage=()=>{
-        localStorage.setItem("type",JSON.stringify("Top"))
-    }
-    const handleBottomsPage=()=>{
-        localStorage.setItem("type",JSON.stringify("Bottom"))
-    }
-    const handleAccessoriesPage=()=>{
-        localStorage.setItem("type",JSON.stringify("Accessories"))
-        
-    }
   return (
     <>
     <div className='flex p-2 px-6 border border-transparent border-b shadow justify-between'>
@@ -27,9 +17,9 @@ export default function Navbar(props) {
         <div className='flex mt-[1px] gap-10'>
             <ul className='md:flex mt-1 hidden gap-12'>
                <Link to={"/"}><li className={`cursor-pointer `}>Home</li></Link> 
-                <Link to="Category"> <li onClick={handleTopsPage} className={`cursor-pointer `}>Tops</li></Link>
-                <Link to="Category"> <li onClick={handleBottomsPage} className='cursor-pointer'>Bottoms</li></Link>
-                <Link to="Category"> <li onClick={handleAccessoriesPage} className='cursor-pointer'>Accessories</li></Link>
+                <Link to="/Tops"> <li  className={`cursor-pointer `}>Tops</li></Link>
+                <Link to="/Bottoms"> <li  className='cursor-pointer'>Bottoms</li></Link>
+                <Link to="/Accessories"> <li  className='cursor-pointer'>Accessories</li></Link>
                 <li  className='cursor-pointer'>Contact</li>
             </ul>
             <div className='flex cursor-pointer mt-2 gap-1'>

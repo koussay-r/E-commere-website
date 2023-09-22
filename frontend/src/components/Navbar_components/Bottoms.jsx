@@ -4,11 +4,10 @@ import Products from '../home/Products'
 import loader from "./../../assests/1494.gif"
 export default function Category() {
   const [productsFound,setProductsFound]=useState([])
-  const [productRequested,setProductsRequested]=useState(JSON.parse(localStorage.getItem("type")))
   useEffect(()=>{
     const handleFindRightProducts=async()=>{
       try{
-        const res=await axios.post("http://localhost:9000/requestProducts",{type:productRequested})
+        const res=await axios.post("http://localhost:9000/requestProducts",{type:"Bottom"})
         setProductsFound(res.data)
       }
       catch(err){
@@ -16,11 +15,11 @@ export default function Category() {
       }
     }
     handleFindRightProducts()
-  },[productRequested])
+  },[])
   return (
     <div>
       <p className='text-[70px] text-center font-bold '>
-        {productRequested}
+Bottoms
       </p>
       {
         productsFound.length===0? 
