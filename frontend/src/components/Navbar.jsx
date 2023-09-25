@@ -1,11 +1,16 @@
-import React, {  useState } from 'react'
+import React, {  useContext, useState } from 'react'
 import {AiOutlineShoppingCart} from "react-icons/ai"
 import {BiMenuAltRight} from "react-icons/bi"
 import { Link } from 'react-router-dom'
+import { AuthenticatedContext } from '../App'
 export default function Navbar(props) {
+    const [OpenClose,setOpenClose]=useContext(AuthenticatedContext)
     const [menu,setMenu]=useState(false)
     const handleMenu=()=>{
         setMenu(!menu)
+    }
+    const hadnleOpenClose=()=>{
+        setOpenClose(!OpenClose)
     }
   return (
     <>
@@ -22,7 +27,7 @@ export default function Navbar(props) {
                 <Link to="/Accessories"> <li  className='cursor-pointer'>Accessories</li></Link>
                 <li  className='cursor-pointer'>Contact</li>
             </ul>
-            <div className='flex cursor-pointer mt-2 gap-1'>
+            <div onClick={hadnleOpenClose} className='flex cursor-pointer mt-2 gap-1'>
                 <AiOutlineShoppingCart size={"20"} className=''/>
                 <p className='bg-black text-white h-[20px] mt-[1px] text-[12px] w-[18px] pl-[6px]  rounded-full'>0</p>
             </div>

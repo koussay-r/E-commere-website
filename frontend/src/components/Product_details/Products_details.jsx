@@ -3,8 +3,15 @@ import axios from "axios"
 export default function Products_details() {
     const [productPicked,setProductPicked]=useState(JSON.parse(localStorage.getItem("productPicked")))
     const [ProductData,setProductData]=useState({})
+    const [sendPic,ssetSendPic]=useState({
+        name:"",
+    product:"",
+    price:"",
+    type:"",
+    discription:"",
+    picture:""
+    })
     useEffect(()=>{
-        console.log(productPicked)
         const handleGetDataForProductPicked=async()=>{
             try{
                 const res=await axios.post("http://localhost:9000/ProductDetails",{_id:productPicked})
@@ -36,7 +43,7 @@ export default function Products_details() {
                 <p className='mt-4'>Quantity</p>
                 <input type={"number"} min={"1"} max={"100"} className='outline-none border border-gray-400 mt-2 w-[60px] py-1 px-2' placeholder='1' />
             </div> 
-            <button className='mt-4 bg-black/80 text-white px-5 py-3'>Add to chart</button>
+            <button  className='mt-4 bg-black/80 text-white px-5 py-3'>Add to chart</button>
         </div>
     </div>
   )
