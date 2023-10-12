@@ -1,10 +1,9 @@
 const mongoose=require("mongoose")
 const Schema=mongoose.Schema({
+    productId:String,
     name:String,
-    product:String,
     price:String,
-    type:String,
-    discription:String,
-    picture:String
+    picture:String,
+    numberOfThisItem:Number,
 })
 module.exports=Schema

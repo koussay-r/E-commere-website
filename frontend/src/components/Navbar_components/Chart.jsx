@@ -18,10 +18,9 @@ export default function Chart() {
     const hanldeCloseOpen=()=>{
         setIsVisible(!isVisible)
     }
-    console.log("hey");
   return (
     <>
-    <div className={`w-full transition-all duration-150  top-0 h-[100vh] ${isVisible?"fixed" : "hidden"} bg-white/50`}>
+    <div className={`w-full transition-all duration-150  top-0 h-[100vh] ${isVisible?"fixed" : "hidden"} opacity-70 bg-gray-200`}>
 
     </div>
     <motion.div  animate={isVisible ? show : hide} className={`fixed  border top-0 h-[100hv] bg-white bottom-0 right-0 w-[450px]`}>

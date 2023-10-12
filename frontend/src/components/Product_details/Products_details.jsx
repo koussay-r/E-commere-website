@@ -26,7 +26,8 @@ export default function Products_details() {
         },[])
   return (
     <>
-    {  ProductData.length!==0?        <div className='flex border border-transparent border-b shadow  flex-row '>
+    {  ProductData.length!==0?  
+    <div className='flex border border-transparent border-b shadow  flex-row '>
         <img src={ProductData.image} className='md:h-[650px] h-[400px]  w-full  object-cover  md:w-[35%]'/>
         <div className=' w-[55%] ml-20 mt-28'>
             <p className='text-[60px]'>{ProductData.name}</p>
@@ -48,7 +49,8 @@ export default function Products_details() {
             </div> 
             <button  className='mt-4 bg-black/80 text-white px-5 py-3'>Add to chart</button>
         </div>
-    </div>:
+    </div>
+    :
     <img src={loader} className='block m-auto pb-[200px] mt-[30%] md:mt-[20%]' />}
     </>
   )

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import axios from "axios"
-import Test from './Test'
 export default function Subscribe() {
     const [form,setForm]=useState({
         name:"",
