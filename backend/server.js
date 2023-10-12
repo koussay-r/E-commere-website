@@ -84,8 +84,9 @@ app.post("/addProductToCart",async(req,res)=>{
         productId:"",
         name:"",
         price:"",
+        size:"",
         picture:"",
-        numberOfThisItem:0,
+        numberOfThisItem:0
     }
     try{
         const CartData=await CartModel.findOne({productId:req.body._id});
@@ -94,8 +95,9 @@ app.post("/addProductToCart",async(req,res)=>{
             cartDetails.productId=ProductData._id
             cartDetails.name=ProductData.name
             cartDetails.price=ProductData.price
+            cartDetails.size=ProductData.size
             cartDetails.picture=ProductData.image
-            cartDetails.numberOfThisItem=1;
+            cartDetails.numberOfThisItem=req.body.numberOfThisItem;
             const cartDataFilled=await CartModel.create(cartDetails)
             res.status(201).send(cartDataFilled)
         }
@@ -107,6 +109,14 @@ app.post("/addProductToCart",async(req,res)=>{
     }
     catch(err){
         console.log(err);
+    }
+})
+app.get("/fetchCartProducts",async(req, res)=>{
+    try{
+        const ress=await CartModel.find({})
+        res.status(200).send(ress)
+    }catch(Err){
+        console.log(Err);
     }
 })
 //Listeners
