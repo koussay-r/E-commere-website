@@ -3,10 +3,10 @@ import {BiLogoFacebook,BiLogoTwitter,BiLogoInstagram} from "react-icons/bi"
 export default function Policy() {
   return (
     <div className='flex justify-between p-5 mt-10 border border-transparent border-t-gray-300'>
-        <p>
+        <p >
         MODULAR
         </p>
-        <ul className='flex gap-5'>
+        <ul className='flex  gap-5'>
             <li>Privacy Policy</li>
             <li>TErms & Conditions</li>
             <li>Shipping</li>

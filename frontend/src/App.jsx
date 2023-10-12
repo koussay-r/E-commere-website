@@ -11,10 +11,10 @@ import Accessories from "./components/Navbar_components/Accessories"
 import Chart from './components/Navbar_components/Chart'
 export const AuthenticatedContext=createContext()
 export default function App() {
-  const [OpenClose,setOpenClose]=useState(false)
+  const [isVisible, setIsVisible] = useState(false);
   return (
     <>
-    <AuthenticatedContext.Provider value={[OpenClose,setOpenClose]}>
+    <AuthenticatedContext.Provider value={[isVisible, setIsVisible]}>
     <BrowserRouter>
     <Navbar/>
     <Chart/>

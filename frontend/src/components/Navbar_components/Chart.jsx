@@ -1,34 +1,30 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import {IoCloseSharp} from "react-icons/io5"
 import {motion} from "framer-motion"
 import { AuthenticatedContext } from '../../App'
-export default function Chart() {
-    const [OpenClose,setOpenClose]=useContext(AuthenticatedContext)
-    const hanldeCloseOpen=()=>{
-        setOpenClose(!OpenClose)
+const show = {
+    opacity: 1,
+    display: "block"
+  };
+  
+  const hide = {
+    opacity: 0,
+    transitionEnd: {
+      display: "none"
     }
+  };
+export default function Chart() {
+    const [isVisible, setIsVisible]=useContext(AuthenticatedContext)
+    const hanldeCloseOpen=()=>{
+        setIsVisible(!isVisible)
+    }
+    console.log("hey");
   return (
     <>
-    <motion.div 
-    initial={"hidden"}
-    whileInView={OpenClose===false?"visible":"hidden"}
-    viewport={{once:true,amount:0.5}}
-    transition={{delay:0.4,duration:0.4}} 
-    variants={{
-        hidden:{opacity:0,x:0},
-        visible:{opacity:1,x:0}
-    }}className={`w-full  top-0 h-[100vh] ${OpenClose?"fixed" : "hidden"} bg-white/80`}>
+    <div className={`w-full transition-all duration-150  top-0 h-[100vh] ${isVisible?"fixed" : "hidden"} bg-white/50`}>
 
-    </motion.div>
-    <motion.div 
-    initial={"hidden"}
-    whileInView={OpenClose===false?"visible":"hidden"}
-    viewport={{once:true,amount:0.5}}
-    transition={{delay:0.4,duration:0.4}}
-    variants={{
-        hidden:{opacity:0,x:20},
-        visible:{opacity:1,x:0}
-    }} className={`fixed border top-0 h-[100hv] ${OpenClose?"fixed":"hidden"} bg-white bottom-0 right-0 w-[450px]`}>
+    </div>
+    <motion.div  animate={isVisible ? show : hide} className={`fixed  border top-0 h-[100hv] bg-white bottom-0 right-0 w-[450px]`}>
         <div className='flex font-bold p-4 justify-between border border-transparent border-b shadow'>
             <p>
                 YOUR CHART

@@ -4,17 +4,17 @@ import {BiMenuAltRight} from "react-icons/bi"
 import { Link } from 'react-router-dom'
 import { AuthenticatedContext } from '../App'
 export default function Navbar(props) {
-    const [OpenClose,setOpenClose]=useContext(AuthenticatedContext)
+    const [isVisible, setIsVisible]=useContext(AuthenticatedContext)
     const [menu,setMenu]=useState(false)
     const handleMenu=()=>{
         setMenu(!menu)
     }
     const hadnleOpenClose=()=>{
-        setOpenClose(!OpenClose)
+        setIsVisible(!isVisible)
     }
   return (
     <>
-    <div className='flex p-2 px-6 border border-transparent border-b shadow justify-between'>
+    <div className='flex p-2 px-6 border border-transparent z-[10] border-b shadow justify-between'>
         <div className='flex gap-4'>
             <p className='text-black text-[26px]'>MDLR</p>
             <p className='text-black lg:block hidden mt-2'>Online Store</p>
