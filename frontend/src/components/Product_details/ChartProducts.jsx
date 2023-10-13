@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import axios from "axios"
 import {LuArrowBigDownDash,LuArrowBigUpDash} from "react-icons/lu"
 export default function ChartProducts(props) {
-  const [numberOfThisItems,setNumberOfThisItems]=useState(5)
+  const [numberOfThisItems,setNumberOfThisItems] = useState(props.numberOfThisItem)
   const handleAddMoreOfThisItem=async()=>{
-    setNumberOfThisItems(numberOfThisItems++)
+    setNumberOfThisItems(numberOfThisItems+1)
     try{
       await axios.post("http://localhost:9000/addOrRemoveToCartTheSameProduct",{_id:props.productId,encreaseOrDecrease:true})
     }catch(Err){
@@ -13,7 +13,7 @@ export default function ChartProducts(props) {
 
   }
 const handleRemoveOfThisItem=async()=>{
-  setNumberOfThisItems(numberOfThisItems++)
+  setNumberOfThisItems(numberOfThisItems-1)
   try{
     await axios.post("http://localhost:9000/addOrRemoveToCartTheSameProduct",{_id:props.productId,encreaseOrDecrease:false})
   }catch(Err){
