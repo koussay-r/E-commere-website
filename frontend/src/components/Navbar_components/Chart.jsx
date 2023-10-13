@@ -26,7 +26,7 @@ export default function Chart() {
         try{
           const res=await axios.get("http://localhost:9000/fetchCartProducts")
           console.log(res.data[0])
-          setCartProducts(res.data[0])
+          setCartProducts(res.data)
         }catch(Err){
           console.log(Err);
         }
@@ -38,7 +38,7 @@ export default function Chart() {
     <div className={`w-full transition-all duration-150  top-0 h-[100vh] ${isVisible?"fixed" : "hidden"} opacity-70 bg-gray-200`}>
 
     </div>
-    <motion.div  animate={isVisible ? show : hide} className={`fixed  border top-0 h-[100hv] bg-white bottom-0 right-0 w-[450px]`}>
+    <motion.div  animate={isVisible ? show : hide} className={`fixed  border top-0 h-[100hv] bg-white bottom-0 right-0 w-[500px]`}>
         <div className='flex font-bold p-4 justify-between border border-transparent border-b shadow'>
             <p>
                 YOUR CHART

@@ -95,11 +95,11 @@ app.post("/addProductToCart",async(req,res)=>{
             cartDetails.productId=ProductData._id
             cartDetails.name=ProductData.name
             cartDetails.price=ProductData.price
-            cartDetails.size=ProductData.size
             cartDetails.picture=ProductData.image
+            cartDetails.size=req.body.size
             cartDetails.numberOfThisItem=req.body.numberOfThisItem;
             const cartDataFilled=await CartModel.create(cartDetails)
-            res.status(201).send(cartDataFilled)
+            res.status(201).send(cartDetails)
         }
         else{
             CartData.numberOfThisItem++
