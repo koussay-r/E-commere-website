@@ -25,8 +25,8 @@ export default function Chart() {
       const handleFetchingCartProducts=async()=>{
         try{
           const res=await axios.get("http://localhost:9000/fetchCartProducts")
-          console.log(res.data[0])
           setCartProducts(res.data)
+          console.log(res.data)
         }catch(Err){
           console.log(Err);
         }
@@ -35,7 +35,7 @@ export default function Chart() {
     },[])
   return (
     <>
-    <div className={`w-full transition-all duration-150  top-0 h-[100vh] ${isVisible?"fixed" : "hidden"} opacity-70 bg-gray-200`}>
+    <div onClick={hanldeCloseOpen} className={`w-full transition-all duration-150  top-0 h-[100vh] ${isVisible?"fixed" : "hidden"} opacity-70 bg-gray-200`}>
 
     </div>
     <motion.div  animate={isVisible ? show : hide} className={`fixed  border top-0 h-[100hv] bg-white bottom-0 right-0 w-[500px]`}>
@@ -51,7 +51,7 @@ export default function Chart() {
             No items found.
         </p>:
         <div>
-         <ChartProducts _id={CartProducts[0]._id} productId={CartProducts[0].productId} name={CartProducts[0].name} price={CartProducts[0].price} size={CartProducts[0].size} picture={CartProducts[0].picture} numberOfThisItem={CartProducts[0].numberOfThisItem} />
+         <ChartProducts _id={CartProducts[1]._id} productId={CartProducts[1].productId} name={CartProducts[1].name} price={CartProducts[1].price} size={CartProducts[1].size} picture={CartProducts[1].picture} numberOfThisItem={CartProducts[1].numberOfThisItem} />
         </div>
         }
     </motion.div>

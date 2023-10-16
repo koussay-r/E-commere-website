@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
+import { toast } from "react-hot-toast";
 import loader from "./../../assests/1494.gif"
 export default function Products_details() {
     const [productPicked,setProductPicked]=useState(JSON.parse(localStorage.getItem("productPicked")))
@@ -12,18 +13,42 @@ export default function Products_details() {
     discription:"",
     picture:""
     })
+    const [productDeatilsNeeded,setProductDeatilsNeeded]=useState({
+        size:"",
+        numberOfThisItem:1
+    })
+    const handleGetSize=(e)=>{
+        setProductDeatilsNeeded({
+          ...productDeatilsNeeded,
+            size:e.target.value
+        })
+    }
+    const handleGetNumberOfThisItem=(e)=>{
+        setProductDeatilsNeeded({
+            ...productDeatilsNeeded,
+            numberOfThisItem:e.target.value
+          })
+    }
     useEffect(()=>{
         const handleGetDataForProductPicked=async()=>{
             try{
                 const res=await axios.post("http://localhost:9000/ProductDetails",{_id:productPicked})
                 setProductData(res.data[0])
-                console.log(res.data[0]);
+                
             }catch(err){
                 console.log(err)
             }
         }
         handleGetDataForProductPicked()
         },[])
+        const handleAddOrderToCart=async()=>{
+            try {
+                const res=await axios.post("http://localhost:9000/addProductToCart",{_id:ProductData._id,size:productDeatilsNeeded.size,numberOfThisItem:productDeatilsNeeded.numberOfThisItem})
+                console.log(res);
+            } catch (error) {
+              console.log(error.message)  
+            }
+        }
   return (
     <>
     {  ProductData.length!==0?  
@@ -35,19 +60,19 @@ export default function Products_details() {
             <p className='mt-10'>{ProductData.discription}</p>
             <div className='block w-full m-auto'>
                 <p className='text-[20px] mt-10 font-semibold'>Size</p>
-                <select className='w-full bg-gradient-to-b from-white to-gray-200 mt-5 pl-4 py-2 '>
-                    <option selected>Select size</option>
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                    <option>XLL</option>
+                <select onChange={handleGetSize} value={productDeatilsNeeded.size}  className='w-full bg-gradient-to-b from-white to-gray-200 mt-5 pl-4 py-2 '>
+                    <option selected >Select size</option>
+                    <option value={"XS"} >XS</option>
+                    <option value={"S"} >S</option>
+                    <option value={"M"} >M</option>
+                    <option value={"L"} >L</option>
+                    <option value={"XL"} >XL</option>
+                    <option value={"XLL"} >XLL</option>
                 </select>
                 <p className='mt-4'>Quantity</p>
-                <input type={"number"} min={"1"} max={"100"} className='outline-none border border-gray-400 mt-2 w-[60px] py-1 px-2' placeholder='1' />
+                <input value={productDeatilsNeeded.numberOfThisItem} onChange={handleGetNumberOfThisItem} type={"number"} min={"1"} max={"100"} className='outline-none border border-gray-400 mt-2 w-[60px] py-1 px-2'  />
             </div> 
-            <button  className='mt-4 bg-black/80 text-white px-5 py-3'>Add to chart</button>
+            <button onClick={handleAddOrderToCart}  className='mt-4 bg-black/80 text-white px-5 py-3'>Add to chart</button>
         </div>
     </div>
     :

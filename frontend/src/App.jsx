@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Home from './components/home/Home'
 import Subscribe from './components/Subscribe'
 import Policy from './components/Policy'
+import {Toaster} from 'react-hot-toast'
 import {BrowserRouter ,Route,Routes} from 'react-router-dom'
 import Products_details from './components/Product_details/Products_details'
 import Tops from "./components/Navbar_components/Tops"
@@ -16,6 +17,10 @@ export default function App() {
     <>
     <AuthenticatedContext.Provider value={[isVisible, setIsVisible]}>
     <BrowserRouter>
+    <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
     <Navbar/>
     <Chart/>
     <Routes>

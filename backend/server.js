@@ -92,17 +92,18 @@ app.post("/addProductToCart",async(req,res)=>{
         const CartData=await CartModel.findOne({productId:req.body._id});
         if(CartData==null){
             const ProductData=await model.findById({_id:req.body._id});
+            console.log(ProductData)
             cartDetails.productId=ProductData._id
             cartDetails.name=ProductData.name
             cartDetails.price=ProductData.price
             cartDetails.picture=ProductData.image
             cartDetails.size=req.body.size
             cartDetails.numberOfThisItem=req.body.numberOfThisItem;
-            const cartDataFilled=await CartModel.create(cartDetails)
+            await CartModel.create(cartDetails)
             res.status(201).send(cartDetails)
         }
         else{
-            CartData.numberOfThisItem++
+            CartData.numberOfThisItem=CartData.numberOfThisItem+numberOfThisItem
         }
         CartData.save()
         res.status(200).json(CartData);
