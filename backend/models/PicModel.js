@@ -5,6 +5,6 @@ const Schema=mongoose.Schema({
     price:String,
     type:String,
     discription:String,
-    picture:String
+    image:String
 })
 module.exports=Schema

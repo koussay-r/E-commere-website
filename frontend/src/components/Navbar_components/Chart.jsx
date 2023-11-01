@@ -51,7 +51,11 @@ export default function Chart() {
             No items found.
         </p>:
         <div>
-         <ChartProducts _id={CartProducts[1]._id} productId={CartProducts[1].productId} name={CartProducts[1].name} price={CartProducts[1].price} size={CartProducts[1].size} picture={CartProducts[1].picture} numberOfThisItem={CartProducts[1].numberOfThisItem} />
+          {
+            CartProducts.map(item=>{
+              return <ChartProducts key={item._id} _id={item._id} productId={item.productId} name={item.name} price={item.price} size={item.size} picture={item.picture} numberOfThisItem={item.numberOfThisItem} />
+            })
+          }
         </div>
         }
     </motion.div>

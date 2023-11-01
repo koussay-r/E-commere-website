@@ -23,7 +23,7 @@ const handleRemoveOfThisItem=async()=>{
   return (
     <div className='flex border justify-between'>
       <div className='border border-t-transparent border-b-transparent border-l-transparent'>
-        <img src={props.picture} className='w-[100px] h-[150px]'/>
+        <img laoding="lazy" src={props.picture} className='w-[100px] h-[150px]'/>
       </div>
       <div className=' w-[280px] pt-5 '>
           <p>{props.name}</p>

@@ -15,7 +15,7 @@ export default function About(props) {
 ‍Modular now operates over 200 stores in the United States, Canada and Europe, offering experiential retail environments and a well-curated mix men's product assortments.
             </p>
         </div>
-        <div className='mt-10 grid sm:grid-cols-2 md:grid-cols-4 '>
+        <div className='mt-10 grid gap-1 sm:grid-cols-2 md:grid-cols-4 '>
             {
                 props.item.map(item=>{
                     return(

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { toast } from "react-hot-toast";
 import loader from "./../../assests/1494.gif"
+import { Link } from 'react-router-dom';
 export default function Products_details() {
     const [productPicked,setProductPicked]=useState(JSON.parse(localStorage.getItem("productPicked")))
     const [ProductData,setProductData]=useState({})
@@ -53,7 +54,7 @@ export default function Products_details() {
     <>
     {  ProductData.length!==0?  
     <div className='flex border border-transparent border-b shadow  flex-row '>
-        <img src={ProductData.image} className='md:h-[650px] h-[400px]  w-full  object-cover  md:w-[35%]'/>
+        <img loading='lazy' src={ProductData.image} className='md:h-[650px] h-[400px]  w-full  object-cover  md:w-[35%]'/>
         <div className=' w-[55%] ml-20 mt-28'>
             <p className='text-[60px]'>{ProductData.name}</p>
             <p className='text-[30px]'>${ProductData.price}.00</p>

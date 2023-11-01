@@ -12,10 +12,9 @@ const app=express()
 const port=process.env.PORT || 9000
 const connectUrl=`mongodb+srv://admin:${process.env.PASSWORD}@cluster0.yde1grw.mongodb.net/mdlrShop?retryWrites=true&w=majority`
 //MiddleWares
+app.use(express.json({ limit: '50mb' }));
 app.use(express.json())
 mongoose.set('strictQuery', true)
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cors());
 //db conifg 
 
@@ -90,9 +89,9 @@ app.post("/addProductToCart",async(req,res)=>{
     }
     try{
         const CartData=await CartModel.findOne({productId:req.body._id});
-        if(CartData==null){
-            const ProductData=await model.findById({_id:req.body._id});
-            console.log(ProductData)
+        if(CartData!=null){
+            const Product=await model.findOne({_id:req.body._id});
+            console.log(Product)
             cartDetails.productId=ProductData._id
             cartDetails.name=ProductData.name
             cartDetails.price=ProductData.price
@@ -103,10 +102,9 @@ app.post("/addProductToCart",async(req,res)=>{
             res.status(201).send(cartDetails)
         }
         else{
-            CartData.numberOfThisItem=CartData.numberOfThisItem+numberOfThisItem
+            CartData.numberOfThisItem=CartData.numberOfThisItem+req.body.numberOfThisItem
+            CartData.save()
         }
-        CartData.save()
-        res.status(200).json(CartData);
     }
     catch(err){
         console.log(err);

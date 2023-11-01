@@ -5,6 +5,7 @@ import loader from "./../../assests/1494.gif"
 import About from './About'
 export default function Home() {
     const [products,setProducts]=useState([])
+const [getProductsFromLocalStorage,SetGetProductsFromLocalStorage] = useState()
     useEffect(()=>{
         const handleHomeProducts=async()=>{
             try{
